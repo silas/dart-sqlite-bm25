@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import 'package:convert/convert.dart' show hex;
 
 class Matchinfo {
   static Uint32List decode(Uint8List encoded, {Endian endian}) {
