@@ -16,9 +16,6 @@ const bm25FormatString = 'pcnalx';
 // relavent).
 double bm25(Uint8List matchinfo,
     {double k1 = 1.2, double b = 0.75, List<double> weights}) {
-  if (k1 <= 0) throw ArgumentError('k1 must be > 0: $k1');
-  if (b <= 0) throw ArgumentError('b must be > 0: $b');
-
   final data = Matchinfo.decode(matchinfo);
 
   final termCount = data[_pIndex];

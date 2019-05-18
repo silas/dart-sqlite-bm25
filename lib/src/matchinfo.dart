@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 class Matchinfo {
   static Uint32List decode(Uint8List encoded, {Endian endian}) {
-    if (encoded == null) ArgumentError.notNull('encodeded');
+    if (encoded == null) throw ArgumentError.notNull('encodeded');
     if (endian == null) endian = Endian.host;
 
     final byteData = ByteData.view(
@@ -22,7 +22,7 @@ class Matchinfo {
   }
 
   static Uint8List encode(Uint32List decoded, {Endian endian}) {
-    if (decoded == null) ArgumentError.notNull('decoded');
+    if (decoded == null) throw ArgumentError.notNull('decoded');
     if (endian == null) endian = Endian.host;
 
     final encoded = ByteData(decoded.length * 4);
