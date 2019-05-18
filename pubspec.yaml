@@ -1,0 +1,14 @@
+name: sqlite_bm25
+version: 0.1.0
+
+description: >-
+  An Okapi BM25 implementation for the SQLite FTS4 extension.
+author: Silas Sewell <silas@sewell.org>
+homepage: http://github.com/silas/dart-sqlite-bm25
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dev_dependencies:
+  convert: ^2.1.1
+  test: ^1.6.3
