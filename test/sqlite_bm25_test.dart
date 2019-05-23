@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:convert/convert.dart' show hex;
 import 'package:sqlite_bm25/sqlite_bm25.dart';
+import 'package:sqlite_bm25/src/matchinfo.dart';
 import 'package:test/test.dart';
 
 void main() {

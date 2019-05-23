@@ -8,12 +8,12 @@ const _cIndex = 1;
 const _nIndex = 2;
 const _aIndex = 3;
 
-// The format string that should be used with matchinfo() on an FTS4
-// virtual table.
+/// The format string that should be used with matchinfo() on an FTS4
+/// virtual table.
 const bm25FormatString = 'pcnalx';
 
-// Converts matchinfo() data to a relevance score (higher is more
-// relavent).
+/// Converts matchinfo() data to a relevance score (lower is more
+/// relavent).
 double bm25(Uint8List matchinfo,
     {double k1 = 1.2, double b = 0.75, List<double> weights}) {
   final data = Matchinfo.decode(matchinfo);

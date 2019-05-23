@@ -27,7 +27,7 @@ example() async {
     table,
     columns: [
       'name',
-      'matchinfo($table, "$bm25FormatString") as info',
+      'matchinfo($table, \'$bm25FormatString\') as info',
     ],
     where: '$table MATCH ?',
     whereArgs: ['sam'],
