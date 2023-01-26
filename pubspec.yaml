@@ -2,7 +2,7 @@ name: sqlite_bm25
 repository: http://github.com/silas/dart-sqlite-bm25
 issue_tracker: https://github.com/silas/dart-sqlite-bm25/issues
 description: An Okapi BM25 implementation for the SQLite FTS4 extension.
-version: 0.2.0
+version: 0.3.0
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
