@@ -131,7 +131,7 @@ void main() {
       await runTest(IntegrationTest(
         columns: ['word', 'text'],
         documents: sentences.map((v) {
-          final r = List<String>();
+          final r = <String>[];
           r.add(v[0].split(' ')[0]);
           r.add(v[0]);
           return r;
@@ -149,17 +149,17 @@ void main() {
 }
 
 class Result implements Comparable<Result> {
-  int id;
-  double _rank;
+  late int id;
+  late double _rank;
 
   Result(this.id, this._rank);
 
-  Result.fromRow(List<String> row, {List<double> weights}) {
+  Result.fromRow(List<String> row, {List<double>? weights}) {
     if (row.length != 2) {
       throw new TestFailure('Result row should have 2 columns: $row');
     }
     id = int.parse(row[0]);
-    _rank = bm25(hex.decode(row[1]), weights: weights);
+    _rank = bm25(hex.decode(row[1]) as Uint8List, weights: weights);
   }
 
   bool operator ==(dynamic other) {
@@ -189,13 +189,18 @@ class IntegrationTest {
   final List<List<String>> documents;
   final String term;
   final List<Result> expected;
-  final List<double> weights;
+  final List<double>? weights;
 
-  IntegrationTest(
-      {this.columns, this.documents, this.term, this.expected, this.weights});
+  IntegrationTest({
+    required this.columns,
+    required this.documents,
+    required this.term,
+    required this.expected,
+    this.weights,
+  });
 
   Future<void> execute() async {
-    List<String> statements = List();
+    List<String> statements = [];
 
     statements.add(_createTable());
 
@@ -234,7 +239,7 @@ class IntegrationTest {
         .where((v) => v.isNotEmpty)
         .map((v) => Result.fromRow(v.split('|'), weights: weights))
         .toList()
-          ..sort();
+      ..sort();
 
     expected.sort();
 
@@ -246,10 +251,10 @@ class IntegrationTest {
   }
 
   String _insert(int id, List<String> values) {
-    var columnsSql = _strings(List()
+    var columnsSql = _strings([]
       ..add('rowid')
       ..addAll(columns));
-    var valuesSql = _strings(List()
+    var valuesSql = _strings([]
       ..add('$id')
       ..addAll(values));
 

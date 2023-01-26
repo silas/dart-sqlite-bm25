@@ -15,7 +15,7 @@ const bm25FormatString = 'pcnalx';
 /// Converts matchinfo() data to a relevance score (lower is more
 /// relavent).
 double bm25(Uint8List matchinfo,
-    {double k1 = 1.2, double b = 0.75, List<double> weights}) {
+    {double k1 = 1.2, double b = 0.75, List<double>? weights}) {
   final data = Matchinfo.decode(matchinfo);
 
   final termCount = data[_pIndex];
@@ -29,7 +29,7 @@ double bm25(Uint8List matchinfo,
   double score = 0;
 
   for (var c = 0; c < columnCount; c++) {
-    final weight = c < weightsLength ? weights[c] : 1;
+    final weight = c < weightsLength ? weights![c] : 1;
     if (weight == 0) continue;
 
     int avgLength = data[_aIndex + c];
